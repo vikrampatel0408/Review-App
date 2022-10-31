@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const MONGO_URI='mongodb+srv://patelvikram202:vikram1111@cluster0.us7oyou.mongodb.net/?retryWrites=true&w=majority';
+
 const connectDB = async () => {
-    try{
+    try {
         // mongodb connection string
-        const con = await mongoose.connect(MONGO_URI, {
+        const con = await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             // useFindAndModify: false,
@@ -11,7 +11,7 @@ const connectDB = async () => {
         })
 
         console.log(`MongoDB connected : ${con.connection.host}`);
-    }catch(err){
+    } catch (err) {
         console.log(err);
         process.exit(1);
     }
